@@ -68,7 +68,10 @@ void setup()
     Serial.println("- EXTERNAL FLASH MEMORY");
   }
 
-  Serial.printf("Flash Memory Size: %dMB\n", spi_flash_get_chip_size() / (1024 * 1024));
+  Serial.printf("Flash Memory Size: %f MB, %d MiB, %d bytes\n",
+                (float)spi_flash_get_chip_size() / (1000.0F * 1000.0F),
+                spi_flash_get_chip_size() / (1024 * 1024),
+                spi_flash_get_chip_size());
 
   if (chip.features & CHIP_FEATURE_EMB_PSRAM)
   {
